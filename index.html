@@ -1,112 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zakari Ait Ouazzou - PhD Student and XAI Expert">
-    <meta name="keywords" content="Zakari Ait Ouazzou, Explainable AI, AI Act Compliance, XAI Consultant">
-    <meta name="author" content="Zakari Ait Ouazzou">
-    <title>Zakari Ait Ouazzou | XAI Consultant</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Zakari Ait Ouazzou - XAI Specialist & AI Compliance Consultant"/>
+    <meta name="keywords" content="Zakari Ait Ouazzou, Explainable AI, AI Act Compliance, AI Consultant, Data Science, Machine Learning"/>
+    <meta name="author" content="Zakari Ait Ouazzou"/>
+    <title>Zakari Ait Ouazzou | AI Compliance & Explainable AI</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
     <style>
+        :root {
+            --accent-color: #bbbbbb;
+            --accent-hover: #cccccc;
+            --text-color: #f5f5f5;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-size: 18px;
             line-height: 1.6;
+            position: relative;
+            background: transparent; /* Transparent so particles show through */
+            color: var(--text-color);
         }
-        .navbar {
+
+        h1, h2, h3, h4 {
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+        h2 {
+            font-size: 2.25rem;
+        }
+        h3 {
+            font-size: 1.75rem;
+        }
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p, li {
+            font-size: 1.125rem;
+        }
+
+        .navbar, footer {
+            background-color: rgba(17,17,17,0.9);
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff !important;
+            font-weight: 500;
+            font-size: 1.125rem;
+        }
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-hover) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            font-weight: 600;
+            color: #111111;
+            font-size: 1.125rem;
+            padding: 0.75rem 1.5rem;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            color: #111111;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        hr {
+            border-color: #333;
+        }
+
+        /* Particles full screen */
+        #tsparticles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind content */
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1; /* Above particles */
+            background: transparent; /* No background, so particles show behind */
+        }
+        .page-section.section {
+            padding-top: 100px;
+        }
+
+        /* Hero Section */
+        #home {
+            display: block;
+            text-align: center;
+            padding-top: 150px;
+        }
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero-content img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
             margin-bottom: 30px;
+            border: 4px solid var(--accent-color);
         }
+        .hero-content p.lead {
+            color: #cfcfcf;
+            font-weight: 300;
+            margin-bottom: 40px;
+            font-size: 1.25rem;
+        }
+
         footer {
             text-align: center;
-            margin-top: 50px;
             padding: 20px 0;
-            background: #f8f9fa;
+            font-size: 1rem;
+            color: #777;
+            background: rgba(17,17,17,0.9);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 576px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero-content img {
+                width: 140px;
+                height: 140px;
+            }
+            .hero-content p.lead {
+                font-size: 1.125rem;
+            }
+            .btn-primary {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="tsparticles"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.page-section');
+
+        window.showSection = function(id) {
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            const selected = document.getElementById(id);
+            if (selected) {
+                selected.style.display = 'block';
+            }
+            window.scrollTo(0,0);
+        };
+
+        // Initially show the home section once the DOM is loaded
+        showSection('home');
+    });
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-dark py-3">
     <div class="container">
-        <a class="navbar-brand" href="#">Zakari Ait Ouazzou</a>
+        <a class="navbar-brand" href="javascript:void(0)" onclick="showSection('home')">Zakari Ait Ouazzou</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <div class="collapse navbar-collapse text-center" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showSection('home')">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showSection('about')">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showSection('services')">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showSection('cv')">My CV</a></li>
+                <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showSection('contact')">Contact</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="container">
-    <section id="home">
-        <div class="text-center">
-            <h1>Welcome to My Professional Page</h1>
-            <p>PhD Student | XAI Specialist | AI Act Compliance Consultant</p>
-            <a href="#services" class="btn btn-primary">Explore Services</a>
+<!-- Home Section -->
+<div class="page-section" id="home">
+    <div class="hero-content">
+        <img src="61153755.jpeg" alt="Zakari Ait Ouazzou">
+        <h1>Zakari Ait Ouazzou</h1>
+        <p class="lead">PhD Candidate | Data Scientist | Explainable AI Specialist</p>
+        <button class="btn btn-primary btn-lg" onclick="showSection('services')">Explore My Services</button>
+    </div>
+</div>
+
+<!-- About Me Section -->
+<div class="page-section section" id="about">
+    <div class="container">
+        <h2 class="text-center">About Me</h2>
+        <p class="text-center">
+            I am a Data Scientist with a strong focus on Explainable AI (XAI), currently pursuing a PhD at <strong>Télécom Paris</strong> and <strong>Institut Polytechnique de Paris</strong>.
+            My work aims to make complex AI systems more transparent, trustworthy, and ethically sound. 
+            Leveraging cutting-edge methods, I deliver solutions that help businesses navigate emerging AI regulations and drive impactful, data-driven strategies.
+        </p>
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="page-section section" id="services">
+    <div class="container">
+        <h2 class="text-center">My Services</h2>
+        <div class="row text-start">
+            <div class="col-md-6 mb-5">
+                <h3>AI Act Compliance</h3>
+                <p>Automated assessments and tools ensuring compliance with EU AI Act, minimizing regulatory risks and enhancing accountability.</p>
+            </div>
+            <div class="col-md-6 mb-5">
+                <h3>Explainability Solutions</h3>
+                <p>Implementing XAI methods (SHAP, LIME) to make AI decisions transparent and understandable, fostering trust in advanced models.</p>
+            </div>
+            <div class="col-md-6 mb-5">
+                <h3>Bias & Fairness Analysis</h3>
+                <p>Identifying and mitigating biases to ensure equitable, responsible AI solutions that respect diverse communities and stakeholders.</p>
+            </div>
+            <div class="col-md-6 mb-5">
+                <h3>AI Documentation</h3>
+                <p>Producing clear, regulator-ready documentation for internal teams and external oversight, ensuring clarity and long-term reliability.</p>
+            </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <hr>
+<!-- CV Section -->
+<div class="page-section section" id="cv">
+    <div class="container">
+        <h2 class="text-center">My CV</h2>
+        
+        <h3>Summary</h3>
+        <p>Data Scientist passionate about XAI, advancing AI interpretability for LLMs and real-time decision-making. Skilled in deep learning, time series, and compliance-driven development.</p>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am Zakari Ait Ouazzou, a PhD student at Télécom Paris specializing in Explainable AI (XAI). My passion lies in making AI transparent and trustworthy, ensuring it benefits businesses and society alike. With experience at TotalEnergies and other leading organizations, I bring a unique combination of academic rigor and practical expertise to every project.</p>
-        <a href="Zakari_Ait_Ouazzou_CV.pdf" class="btn btn-secondary" download>Download My CV</a>
-    </section>
-
-    <hr>
-
-    <section id="services">
-        <h2>Services</h2>
+        <h3>Experience</h3>
+        <h4>Télécom Paris</h4>
         <ul>
-            <li><strong>AI Act Compliance Assessments:</strong> Automated checks and reports to ensure regulatory readiness.</li>
-            <li><strong>Explainability Tools:</strong> SHAP, LIME, and other methods to make AI decisions understandable.</li>
-            <li><strong>Bias and Fairness Detection:</strong> Identify and mitigate biases in datasets and models.</li>
-            <li><strong>Documentation Services:</strong> Generate transparent, regulator-ready reports.</li>
+            <li>PhD Student (Sept 2024 - Present): Researching scalable, user-centric XAI for LLMs and streaming data.</li>
+            <li>R&D Engineer (June 2024 - Sept 2024): Developed novel XAI frameworks improving transparency in AI models.</li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Request a Quote</a>
-    </section>
 
-    <hr>
+        <h4>Institut Polytechnique de Paris (Sept 2024 - Present)</h4>
+        <ul>
+            <li>PhD Student: Focused on solving complex XAI challenges in real-time, high-impact environments.</li>
+        </ul>
 
-    <section id="blog">
-        <h2>Blog</h2>
-        <p>Coming Soon: Insights on AI Compliance, XAI Methods, and Industry Trends.</p>
-    </section>
+        <h4>Darma (Aug 2024 - Present)</h4>
+        <ul>
+            <li>Machine Learning Engineer: Delivered ML solutions improving operational efficiency and AI explainability.</li>
+        </ul>
 
-    <hr>
+        <h4>Voltalis (Feb 2023 - Feb 2024)</h4>
+        <ul>
+            <li>Developed LSTM models for sensor accuracy, forecasting, and consumer analysis.</li>
+            <li>Enhanced operations with simulation models and AI diagnostic tools.</li>
+            <li>Implemented energy-saving strategies, documented findings, and ensured regulatory compliance.</li>
+        </ul>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your Name">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Your Email">
-            </div>
-            <div class="mb-3">
-                <label for="message" class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-    </section>
+        <h4>TotalEnergies (Feb 2022 - Aug 2022)</h4>
+        <ul>
+            <li>Built post-hoc XAI methods for time series models, aiding informed energy trades.</li>
+            <li>Diagnosed model drift with SHAP & LIME and established XAI frameworks for industrial projects.</li>
+        </ul>
+
+        <h4>DEEPXP.io</h4>
+        <ul>
+            <li>Data Science Consultant: Developed ML platform features from data profiling to model deployment.</li>
+            <li>Intern: Created NLP-based similarity models for Airbus, improving document retrieval and insights.</li>
+        </ul>
+
+        <h4>OPENevents (Aug 2018 - Nov 2021)</h4>
+        <ul>
+            <li>Network Technician: Maintained IT infrastructure and supported large-scale events.</li>
+        </ul>
+
+        <h4>Freelance (Feb 2020 - July 2021)</h4>
+        <ul>
+            <li>Built a prostate cancer risk calculator (Django) and an online marketplace (WordPress).</li>
+        </ul>
+
+        <h4>FlowCell (Dec 2020 - Feb 2021)</h4>
+        <ul>
+            <li>Science Research Specialist Intern: Conducted literature reviews and state-of-the-art reports.</li>
+        </ul>
+
+        <h4>CNRS - Laboratoire SATIE (July 2018 - Sept 2018)</h4>
+        <ul>
+            <li>Research Internship: Built a multi-threaded GUI application for flight simulator autopilot control.</li>
+        </ul>
+
+        <h3>Education</h3>
+        <ul>
+            <li>PhD in AI | Institut Polytechnique de Paris & Télécom Paris (2024–2027)</li>
+            <li>MSc in Data Science and AI (Excellence Diploma) | Sorbonne Université (2020–2022)</li>
+            <li>BSc in Computer Science and Mathematics | Sorbonne Université (2017–2020)</li>
+            <li>Full Stack Web Development Certification | Free Code Camp (2016–2017)</li>
+        </ul>
+
+        <h3>Top Skills</h3>
+        <p>Data Research, Next.js, Pandas</p>
+
+        <h3>Languages</h3>
+        <p>French, Arabic, English</p>
+
+        <h3>Certifications</h3>
+        <ul>
+            <li>AWS Dev Day | Modern Application Development</li>
+            <li>Pandas Certification</li>
+        </ul>
+
+        <h3>Honors & Awards</h3>
+        <ul>
+            <li>Winning Team of Facebook's CYCI Coding Challenge</li>
+            <li>Excellence Diploma</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="page-section section" id="contact">
+    <div class="container">
+        <h2 class="text-center">Contact</h2>
+        <p class="text-center mb-5">Get in touch to discuss how we can make your AI systems more transparent, ethical, and compliant.</p>
+        <div class="text-center" style="font-size: 1.125rem;">
+            <p>8 Boulevard de l'Hôpital, 75005 Paris</p>
+            <p>+33 6 59 35 39 76 (Mobile)</p>
+            <p><a href="mailto:aitouazzou.zakari@gmail.com">aitouazzou.zakari@gmail.com</a></p>
+            <p><a href="https://www.linkedin.com/in/aozakari" target="_blank">www.linkedin.com/in/aozakari</a></p>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>&copy; 2024 Zakari Ait Ouazzou. All rights reserved.</p>
+    <p>&copy; 2024 Zakari Ait Ouazzou | All rights reserved.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.5.0/tsparticles.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        tsParticles.load("tsparticles", {
+            "fullScreen": { "enable": false },
+            "background": {
+                "color": { "value": "#0e0e0e" }
+            },
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#bbbbbb" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 3, "random": true },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out"
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "resize": true
+                },
+                "modes": {
+                    "repulse": { "distance": 100, "duration": 0.4 }
+                }
+            },
+            "retina_detect": true
+        });
+    });
+</script>
+
 </body>
 </html>
